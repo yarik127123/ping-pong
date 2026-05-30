@@ -41,7 +41,8 @@ def receive():
 font_win = font.Font(None, 72)
 font_main = font.Font(None, 36)
 # --- ЗОБРАЖЕННЯ ----
-
+pixilart_1 = transform.scale(image.load('paxilart.png').convert_alpha(),(20,100))
+pixilart_1 = transform.scale(image.load('pixilart.png').convert_alpha(),(20,100))
 # --- ЗВУКИ ---
 
 # --- ГРА ---
@@ -90,7 +91,9 @@ while True:
     if game_state:
         screen.fill((30, 30, 30))
         draw.rect(screen, (0, 255, 0), (20, game_state['paddles']['0'], 20, 100))
-        draw.rect(screen, (255, 0, 255), (WIDTH - 40, game_state['paddles']['1'], 20, 100))
+        #draw.rect(screen, (255, 0, 255), (WIDTH - 40, game_state['paddles']['1'], 20, 100))
+        screen.blit(pixilart_1, (20, game_state['paddles'][0]))
+
         draw.circle(screen, (255, 255, 255), (game_state['ball']['x'], game_state['ball']['y']), 10)
         score_text = font_main.render(f"{game_state['scores'][0]} : {game_state['scores'][1]}", True, (255, 255, 255))
         screen.blit(score_text, (WIDTH // 2 -25, 20))
